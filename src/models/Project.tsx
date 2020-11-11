@@ -7,4 +7,5 @@ export interface Project {
     design: string;
     dateOfCompletion: Date;
     categories: Category[];
+    isActive: boolean;
 }

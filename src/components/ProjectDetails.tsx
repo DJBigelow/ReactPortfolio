@@ -4,6 +4,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { Project } from '../models/Project';
 import { ProjectRouteProp } from '../models/ProjectRouteProp';
 import ReactMarkdown from 'react-markdown';
+import RemarkHtml from 'remark-html'
 import './styles/ProjectDetails.css'
 
 
@@ -22,7 +23,8 @@ export const ProjectDetails : FC<RouteComponentProps<ProjectRouteProp>> = ({matc
     
     return (
         <div className='projectDetail'>
-            {project && <ReactMarkdown>{project.design}</ReactMarkdown>}
+            {/* {project && <ReactMarkdown className='markdown'>{project?.title}</ReactMarkdown>} */}
+            {project && <ReactMarkdown plugins={[RemarkHtml]} className='markdown'>{project?.design}</ReactMarkdown>}
         </div>
     )
 }

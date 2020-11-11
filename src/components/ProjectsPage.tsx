@@ -6,7 +6,6 @@ import {Project} from '../models/Project'
 export const ProjectsPage = () => {
     const [projects, setProjects] = useState<Project[]> ([]);
 
-    
     useEffect(() => {
         const getProjects = async () => {
             let projectData = (await Axios.get('http://localhost:5005/api/project/GetProjects')).data
@@ -20,7 +19,6 @@ export const ProjectsPage = () => {
         <div>
             <ProjectList projects={projects} />
         </div>
-    )
-    
+    ) 
 }
 

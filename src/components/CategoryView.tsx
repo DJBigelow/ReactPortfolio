@@ -9,12 +9,12 @@ const getDate = (date?: Date) => {
 };
 
 
+
 export const ProjectList: FC<ProjectsProp> = ({projects}) => (
     <div>
-        
         <ListGroup>
             {projects.sort((a: Project, b: Project) => getDate(a.dateOfCompletion) - getDate(b.dateOfCompletion))
-                    .map(project => (
+                     .map(project => (
                 <ListGroup.Item key={project.id} as="li">
                     <ProjectEntry project={project}/>
                 </ListGroup.Item>
