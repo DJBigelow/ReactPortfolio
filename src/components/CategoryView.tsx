@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import { ProjectsProp } from '../models/ProjectsProp';
 import { ProjectEntry } from './ProjectEntry';
-import { Project } from '../models/Project'
-import {ListGroup, ListGroupItem} from  "react-bootstrap"
+// import { Project } from '../models/Project'
+// import {ListGroup, ListGroupItem} from  "react-bootstrap"
 
 const getDate = (date?: Date) => {
     return date != null ? date.getDate() : 0;
@@ -12,13 +12,22 @@ const getDate = (date?: Date) => {
 
 export const ProjectList: FC<ProjectsProp> = ({projects}) => (
     <div>
-        <ListGroup>
+
+        {/* <ListGroup>
             {projects.sort((a: Project, b: Project) => getDate(a.dateOfCompletion) - getDate(b.dateOfCompletion))
                      .map(project => (
                 <ListGroup.Item key={project.id} as="li">
                     <ProjectEntry project={project}/>
                 </ListGroup.Item>
             ))}
-        </ListGroup>
+        </ListGroup> */}
+
+        <ul>
+            {projects.map(project => (
+                <li key={project.id}>
+                    <ProjectEntry project={project}/>
+                </li>
+            ))}
+        </ul>
     </div>
 )
