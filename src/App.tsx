@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { ProjectDetails } from './components/ProjectDetails';
 import { ProjectsPage } from './components/ProjectsPage';
+import { ProjectForm } from './components/ProjectForm';
 import { Resume } from './components/Resume'
 import {Navbar, Nav} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,6 +26,7 @@ function App() {
               <Route exact path="/" component={Resume} />
               <Route exact path="/projects" component={ProjectsPage} />
               <Route exact path="/projects/detail/:slug" component={ProjectDetails} />
+              <Route exact path="/newproject" component={ProjectForm} />
             </Switch>
           </header>
         </div>

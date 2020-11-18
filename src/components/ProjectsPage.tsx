@@ -18,6 +18,9 @@ export const ProjectsPage = () => {
     return (
         <div>
             <ProjectList projects={projects} />
+            <div>
+                <a href="/newproject">Add Project</a>
+            </div>
         </div>
     ) 
 }
