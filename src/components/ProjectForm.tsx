@@ -1,13 +1,20 @@
 import React from 'react'
+import {useHistory} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import {Project} from '../models/Project'
-import {Button, FormControl, Form} from 'react-bootstrap'
+import {Button, Form} from 'react-bootstrap'
+import Axios from 'axios'
 // const DatePicker = require("react-bootstrap-date-picker")
+
+const apiUrl = process.env.API_URL;
 
 export const ProjectForm = () => {
     const { register, handleSubmit} = useForm();
-    const onSubmit = (project: Project) => {
+    const history = useHistory();
+    const  onSubmit = async (project: Project) => {
         console.log(project.title)
+        await Axios.post(apiUrl + '/addProject', project)
+        history.push('/projects')
     } 
 
     
@@ -28,16 +35,7 @@ export const ProjectForm = () => {
                 <Form.Control name="dateOfCompletion" type="text" placeholder="mm/dd/yyyy"/>
             </Form.Group>
 
-            <Button type="submit">
-                Submit
-            </Button>
+            <Button type="submit">Submit</Button>
         </Form>
-
-        // <form onSubmit={handleSubmit(onSubmit)}>
-        //     <input type="text" name="title" ref={register({required: true})}/>
-        //     <input type="textarea" name="title" ref={register({required: true})}/>
-        //     <input type="text" name="title" ref={register({required: true})}/>
-        //     <input type="submit" />
-        // </form>
     )
 }
