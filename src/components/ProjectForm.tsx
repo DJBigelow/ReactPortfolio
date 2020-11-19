@@ -6,14 +6,14 @@ import {Button, Form} from 'react-bootstrap'
 import Axios from 'axios'
 // const DatePicker = require("react-bootstrap-date-picker")
 
-const apiUrl = process.env.API_URL;
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export const ProjectForm = () => {
     const { register, handleSubmit} = useForm();
     const history = useHistory();
     const  onSubmit = async (project: Project) => {
         console.log(project.title)
-        await Axios.post(apiUrl + '/addProject', project)
+        await Axios.post('https://djbportfolio.herokuapp.com/addproject', project)
         history.push('/projects')
     } 
 

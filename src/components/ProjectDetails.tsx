@@ -18,7 +18,7 @@ export const ProjectDetails : FC<RouteComponentProps<ProjectRouteProp>> = ({matc
     
     useEffect(() => {
         const getProject = async () => {
-            var response = await Axios.get("http://localhost:5005/api/project/GetProject/" + match.params.slug)
+            var response = await Axios.get("https://djbportfolio.herokuapp.com" + match.params.slug)
             console.log(response.data);
             setProject(response.data);
         }
