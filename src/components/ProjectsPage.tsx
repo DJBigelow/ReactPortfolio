@@ -8,7 +8,7 @@ export const ProjectsPage = () => {
 
     useEffect(() => {
         const getProjects = async () => {
-            let projectData = (await Axios.get('https://djbportfolio.herokuapp.com')).data
+            let projectData = (await Axios.get('https://djbportfolio.herokuapp.com/api/project/GetProjects')).data
             console.log(projectData);
             setProjects(projectData);
         }
