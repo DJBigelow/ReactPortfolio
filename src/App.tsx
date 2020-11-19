@@ -18,7 +18,10 @@ function App() {
     <Auth0Provider 
       domain="dev-6w9to6yp.us.auth0.com" 
       clientId="0tyOZYxuKqSjrgSLPjtyB0EZVikW3qza"
-      redirectUri={window.location.origin}>
+      redirectUri={window.location.origin}
+      audience="https://portfolio-api.com"
+      scope="reada:current_user update:current_user_metadata">
+        
        <Navbar bg="dark" variant="dark" sticky="top">
         <Navbar.Brand href='/'>DJ Bigelow</Navbar.Brand>
         <Nav className="mr-auto">
