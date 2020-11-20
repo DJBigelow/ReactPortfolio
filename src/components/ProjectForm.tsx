@@ -14,11 +14,18 @@ export const ProjectForm = () => {
 
     const history = useHistory();
     const onSubmit = async (project: Project) => {
-        const accessToken = getAccessTokenSilently( {
+        const accessToken = await getAccessTokenSilently( {
             audience: process.env.REACT_APP_AUDIENCE
         });
         console.log(project.title)
-        await Axios.post('https://djbportfolio.herokuapp.com/addproject', project)
+        await Axios.post(
+            'https://djbportfolio.herokuapp.com/api/project/addproject', 
+            project,
+            {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            })
         history.push('/projects')
     } 
 
