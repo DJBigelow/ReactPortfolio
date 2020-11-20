@@ -5,11 +5,33 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Auth0Provider } from '@auth0/auth0-react'
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { ProjectDetails } from './components/ProjectDetails';
+import { ProjectsPage } from './components/ProjectsPage';
+import { ProjectForm } from './components/ProjectForm';
+import { Resume } from './components/Resume'
 
 ReactDOM.render(
   <React.StrictMode>
-      <App />
+     <BrowserRouter>
+        <Auth0Provider domain={process.env.REACT_APP_DOMAIN}
+                       clientId={process.env.REACT_APP_CLIENT_ID}
+                       redirectUri={window.location.origin}>
+
+        <App />
+
+        <div className="App">
+            <header className="App-header">
+              <Switch>
+                <Route exact path="/" component={Resume} />
+                <Route exact path="/projects" component={ProjectsPage} />
+                <Route exact path="/projects/detail/:slug" component={ProjectDetails} />
+                <Route exact path="/newproject" component={ProjectForm} />
+              </Switch>
+            </header>
+          </div>
+        </Auth0Provider>
+      </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

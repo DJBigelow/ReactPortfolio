@@ -20,7 +20,7 @@ export const ProjectForm = () => {
 
         console.log(project.title)
         await Axios.post(
-            'https://djbportfolio.herokuapp.com/api/project/addproject', 
+            `${apiUrl}/api/project/addproject`, 
             project,
             {
                 headers: {
@@ -30,6 +30,7 @@ export const ProjectForm = () => {
         history.push('/projects')
     } 
 
+    console.log(user);
 
     if (user.role === "Admin") {
         return (
