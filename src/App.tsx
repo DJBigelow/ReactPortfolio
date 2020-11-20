@@ -5,7 +5,6 @@ import { ProjectsPage } from './components/ProjectsPage';
 import { ProjectForm } from './components/ProjectForm';
 import { Resume } from './components/Resume'
 import { LoginButton } from './components/LoginButton'
-import { LogOutButton } from './components/LogoutButton'
 import {Navbar, Nav} from 'react-bootstrap'
 import { Auth0Provider } from '@auth0/auth0-react'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,19 +14,15 @@ import './App.css';
 function App() {
 
   return (
-    <Auth0Provider 
-      domain="dev-6w9to6yp.us.auth0.com" 
-      clientId="0tyOZYxuKqSjrgSLPjtyB0EZVikW3qza"
-      redirectUri={window.location.origin}
-      audience="https://portfolio-api.com"
-      scope="reada:current_user update:current_user_metadata">
-        
+    <div>
        <Navbar bg="dark" variant="dark" sticky="top">
         <Navbar.Brand href='/'>DJ Bigelow</Navbar.Brand>
-        <Nav className="mr-auto">
+        <Nav >
           <Nav.Link href="/">Resume</Nav.Link>
           <Nav.Link href="/projects">Projects</Nav.Link>
-          <LoginButton/>
+          <Nav.Item >
+            <LoginButton/>
+          </Nav.Item>
         </Nav>
       </Navbar>
       
@@ -43,7 +38,7 @@ function App() {
           </header>
         </div>
       </BrowserRouter>
-    </Auth0Provider>
+    </div>
   );
 }
 

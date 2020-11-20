@@ -3,15 +3,20 @@ import {useHistory} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import {Project} from '../models/Project'
 import {Button, Form} from 'react-bootstrap'
+import {useAuth0} from '@auth0/auth0-react'
 import Axios from 'axios'
-// const DatePicker = require("react-bootstrap-date-picker")
 
-const apiUrl = process.env.REACT_APP_API_URL;
+
 
 export const ProjectForm = () => {
     const { register, handleSubmit} = useForm();
+    const { getAccessTokenSilently } = useAuth0();
+
     const history = useHistory();
-    const  onSubmit = async (project: Project) => {
+    const onSubmit = async (project: Project) => {
+        const accessToken = getAccessTokenSilently( {
+            audience: process.env.REACT_APP_AUDIENCE
+        });
         console.log(project.title)
         await Axios.post('https://djbportfolio.herokuapp.com/addproject', project)
         history.push('/projects')

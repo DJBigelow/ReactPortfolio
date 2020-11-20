@@ -4,10 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Navbar, Nav } from 'react-bootstrap';
+import { Auth0Provider } from '@auth0/auth0-react'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Auth0Provider  domain="dev-6w9to6yp.us.auth0.com" 
+                    clientId="0tyOZYxuKqSjrgSLPjtyB0EZVikW3qza"
+                    redirectUri={window.location.origin}
+                    audience="https://portfolio-api.com"
+                    scope="reada:current_user update:current_user_metadata">
+
+      <App />
+      
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
