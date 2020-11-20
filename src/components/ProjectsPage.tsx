@@ -22,7 +22,7 @@ export const ProjectsPage = () => {
     
     console.log(user);
 
-    if (isAuthenticated && user.role === "Admin") {
+    if (isAuthenticated) {
         return <div>
         <ProjectList projects={projects} />
 

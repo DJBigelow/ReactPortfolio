@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Navbar, Nav } from 'react-bootstrap';
 import { Auth0Provider } from '@auth0/auth0-react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ProjectDetails } from './components/ProjectDetails';
