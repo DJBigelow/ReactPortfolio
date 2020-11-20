@@ -4,13 +4,10 @@ import { RouteComponentProps } from 'react-router-dom';
 import { Project } from '../models/Project';
 import { ProjectRouteProp } from '../models/ProjectRouteProp';
 import ReactMarkdown from 'react-markdown';
-// import RemarkHtml from 'remark-html'
 import './styles/ProjectDetails.css'
 import './styles/CodeHighlight.css'
-// import RemarkPrism from 'remark-prism';
-const RemarkPrism = require('remark-prism');
-// const RemarkHighlight = require( 'remark-highlight.js');
 
+const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
 
 
 export const ProjectDetails : FC<RouteComponentProps<ProjectRouteProp>> = ({match}) => {
@@ -18,7 +15,7 @@ export const ProjectDetails : FC<RouteComponentProps<ProjectRouteProp>> = ({matc
     
     useEffect(() => {
         const getProject = async () => {
-            var response = await Axios.get("https://djbportfolio.herokuapp.com/api/project/GetProject/" + match.params.slug)
+            var response = await Axios.get(apiUrl + '/api/project/GetProject/' + match.params.slug)
             console.log(response.data);
             setProject(response.data);
         }

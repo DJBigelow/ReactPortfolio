@@ -4,20 +4,22 @@ import {ProjectList} from './ProjectList'
 import {Project} from '../models/Project'
 import { useAuth0 } from '@auth0/auth0-react'
 
+const apiUrl: string | undefined = process.env.REACT_APP_API_URL
+
 export const ProjectsPage = () => {
     const [projects, setProjects] = useState<Project[]> ([]);
-    const { isAuthenticated } = useAuth0();
+    const { isAuthenticated, user } = useAuth0();
 
     useEffect(() => {
         const getProjects = async () => {
-            let projectData = (await Axios.get('https://djbportfolio.herokuapp.com/api/project/GetProjects')).data
+            let projectData = (await Axios.get(apiUrl + '/api/project/GetProjects')).data
             console.log(projectData);
             setProjects(projectData);
         }
         getProjects();
     }, []);
     
-    if (isAuthenticated) {
+    if (isAuthenticated && user.role == "Admin") {
         return <div>
         <ProjectList projects={projects} />
 
