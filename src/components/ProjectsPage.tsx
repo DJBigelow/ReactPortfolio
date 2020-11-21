@@ -3,13 +3,12 @@ import Axios from 'axios';
 import {ProjectList} from './ProjectList'
 import {Project} from '../models/Project'
 import { useAuth0 } from '@auth0/auth0-react'
-import auth0 from 'auth0-js'
 
 const apiUrl: string | undefined = process.env.REACT_APP_API_URL
 
 export const ProjectsPage = () => {
     const [projects, setProjects] = useState<Project[]> ([]);
-    const { isAuthenticated, user } = useAuth0();
+    const { user } = useAuth0();
 
     useEffect(() => {
         const getProjects = async () => {
@@ -20,9 +19,9 @@ export const ProjectsPage = () => {
         getProjects();
     }, []);
     
-    console.log(user);
+    // console.log(user['https://schemas.dev-h2j88rmi.com/roles']);
 
-    if (isAuthenticated) {
+    if (user && user['https://schemas.dev-h2j88rmi.com/roles'].includes("Admin")) {
         return <div>
         <ProjectList projects={projects} />
 
