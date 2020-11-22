@@ -9,6 +9,7 @@ import ReactMarkdown from 'react-markdown';
 
 import './styles/ProjectDetails.css'
 import './styles/CodeHighlight.css'
+import { ProjectEntry } from './ProjectEntry';
 
 const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
 
@@ -26,7 +27,7 @@ export const ProjectDetails : FC<RouteComponentProps<ProjectRouteProp>> = ({matc
             setProject(response.data);
         }
         getProject();
-    }, [match.params.slug]);
+    }, [match.params.slug, project]);
     
     if (user && user['https://schemas.dev-h2j88rmi.com/roles'].includes("Admin")) {
         return (

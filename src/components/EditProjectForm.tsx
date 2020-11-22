@@ -23,7 +23,7 @@ export const EditProjectForm: FC<RouteComponentProps<ProjectRouteProp>> = ({matc
             setProject(response.data);
         }
         getProject();
-    }, [match.params.slug]);
+    }, [match.params.slug, project]);
 
     const onSubmit = async (project: Project) => {
         const accessToken = await getAccessTokenSilently( {
