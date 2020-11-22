@@ -19,7 +19,6 @@ export const EditProjectForm : FC<RouteComponentProps<ProjectRouteProp>> = ({mat
     useEffect(() => {
         const getProject = async () => {
             var response = await Axios.get(apiUrl + '/api/project/GetProject/' + match.params.slug)
-            console.log(response.data);
             setProject(response.data);
         }
         getProject();
@@ -31,7 +30,9 @@ export const EditProjectForm : FC<RouteComponentProps<ProjectRouteProp>> = ({mat
             audience: process.env.REACT_APP_AUDIENCE
         });
 
-        console.log(project)
+
+
+        console.log(accessToken)
         await Axios.put(
             `${apiUrl}/api/project/updateproject`, 
             project,
@@ -43,13 +44,12 @@ export const EditProjectForm : FC<RouteComponentProps<ProjectRouteProp>> = ({mat
         history.push('/projects')
     } 
 
-    console.log(user);
 
     if (user && user['https://schemas.dev-h2j88rmi.com/roles'].includes("Admin")) {
         return (
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group controlId="id">
-                    <Form.Control defaultValue={project?.id} type="hidden"/>
+                    <Form.Control name="id" ref={register({required: true})} defaultValue={project?.id} type="hidden"/>
                 </Form.Group>
 
                 <Form.Group controlId="title">
