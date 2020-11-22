@@ -32,7 +32,7 @@ export const ProjectForm = () => {
 
     console.log(user);
 
-    if (user && user['https://schemas.dev-h2j88rmi.com/roles'].includes("Admin")) {
+    if (user.role === "Admin") {
         return (
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group controlId="title">
@@ -55,7 +55,7 @@ export const ProjectForm = () => {
         )
     }
     else {
-        return <Jumbotron>Admin privileges are required to view this page</Jumbotron>
+        return <Jumbotron>Admin privileges are required for this page</Jumbotron>
     }
 
     
