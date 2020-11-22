@@ -9,6 +9,7 @@ import { ProjectDetails } from './components/ProjectDetails';
 import { ProjectsPage } from './components/ProjectsPage';
 import { ProjectForm } from './components/ProjectForm';
 import { Resume } from './components/Resume'
+import { EditProjectForm } from './components/EditProjectForm';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -26,6 +27,7 @@ ReactDOM.render(
                 <Route exact path="/projects" component={ProjectsPage} />
                 <Route exact path="/projects/detail/:slug" component={ProjectDetails} />
                 <Route exact path="/newproject" component={ProjectForm} />
+                <Route exact path="/projects/edit/:slug" component={EditProjectForm} />
               </Switch>
             </header>
           </div>

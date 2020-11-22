@@ -1,7 +1,6 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { useAuth0 } from "@auth0/auth0-react"
 import { Button } from 'react-bootstrap'
-import { UserProfileProp } from '../models/UserProfileProp'
 
 export const LoginButton = () => {
     const {loginWithRedirect, logout, isAuthenticated} = useAuth0();
